@@ -87,6 +87,12 @@ export default class EndOrderSecond extends Component {
                 isRefreshing:false
             })
 
+            result.data = [
+                {id:1,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'黑椒西牛排Style',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:2,orderAlpha:'B号',orderNumber:2,phase:2,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:3,orderAlpha:'D号',orderNumber:1,phase:3,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+
+            ];
             if(result.status==1){
                 this.setState({
                     totalpage:result.page.totalCount
@@ -140,6 +146,10 @@ export default class EndOrderSecond extends Component {
                 this.setState({
                     totalpagesec:result.page.totalCount
                 })
+                result.data = [
+                    {id:1,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'黑椒西牛排Style',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+
+                ];
                 if(page==1){
 
                     this.setState({
@@ -244,9 +254,12 @@ export default class EndOrderSecond extends Component {
                                     <Text style={{color:'#FFFFFF',fontSize:12,backgroundColor:'transparent'}}>{rowData.orderAlpha+'号'}</Text>
                                 </Image>
                                 <View style={styles.item}>
-
-                                    <Text>{rowData.restaurantName}</Text>
-                                    <Text>{rowData.phase==1?'待取餐':rowData.phase==2?'待送达':rowData.phase==3?'正在提交的异常单':rowData.phase==4?'历史订单':'待分配'}</Text>
+                                    <Text style={[comstyle.text,{marginBottom:8,}]}>
+                                        {rowData.restaurantName}
+                                        </Text>
+                                    <Text style={[comstyle.textsmal,{marginLeft:-5,}]}>
+                                        【新消息】{rowData.phase==1?'待取餐':rowData.phase==2?'待送达':
+                                        rowData.phase==3?'正在提交的异常单':rowData.phase==4?'历史订单':'待分配'}</Text>
                                 </View>
                             </View>
 
@@ -279,10 +292,8 @@ export default class EndOrderSecond extends Component {
                 automaticallyAdjustContentInsets={true}>
                 {this.state.list.map((rowData,index)=>{
                     rowData.countdownTime -= 1000;
-                    return( <TouchableOpacity style={styles.listview} onPress={this.selected.bind(this,rowData)} key={index}>
-
-
-
+                    return(
+                        <TouchableOpacity style={styles.listview} onPress={this.selected.bind(this,rowData)} key={index}>
                         <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
                             {/*<View style={{flexDirection:'column'}}>*/}
                             {/*<Image source={require('../../../img/order/lanshutiao.png')}/>*/}
@@ -293,8 +304,11 @@ export default class EndOrderSecond extends Component {
                             </Image>
                             <View style={styles.item}>
 
-                                <Text style={comstyle.text}>{rowData.restaurantName}</Text>
-                                <Text style={comstyle.textsmal}>{rowData.phase==1?'待取餐':rowData.phase==2?'待送达':rowData.phase==3?'正在提交的异常单':rowData.phase==4?'历史订单':'待分配'}</Text>
+                                <Text style={[comstyle.text,{marginBottom:8,}]}>{rowData.restaurantName}</Text>
+                                <Text style={[comstyle.textsmal,{marginLeft:-5,}]}>
+                                    【新消息】{rowData.phase==1?'待取餐':
+                                    rowData.phase==2?'待送达':rowData.phase==3?'正在提交的异常单':rowData.phase==4?'历史订单':
+                                        '待分配'}</Text>
                             </View>
                         </View>
 
@@ -482,7 +496,7 @@ const styles=StyleSheet.create({
     },
     item:{
         flexDirection:'column',
-        alignItems:"center",
+
         marginLeft:10
     },
     yichang:{
@@ -491,6 +505,7 @@ const styles=StyleSheet.create({
         marginRight:20,
         fontSize:14,
         color:'#282828',
+        fontWeight:'bold',
         // fontFamily:'FZLTZHK--GBK1-0',
         letterSpacing:0.01
     },

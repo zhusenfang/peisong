@@ -51,8 +51,8 @@ export default class MineMessage extends Component{
                     // fixDeposit:result.data.fixDeposit
                     // money:result.data.userMemberAccount.account,
                     name:result.data.userMember.nickname,
-                    description:result.data.userMember.introduction,
-                     pic:result.data.userMember.picUrl,
+                    description:'我是一个大哥',//result.data.userMember.introduction,
+                    pic:'http://122.112.196.52:8080/fileService/uploads/2018/04/24/15245677336875.png',//result.data.userMember.picUrl,
 
                 })
                 if(result.data.goWork==1){
@@ -91,8 +91,8 @@ export default class MineMessage extends Component{
            <Image source={require('../../../img/dian/kaiqishangb.png')} style={styles.img}/>
             <Text style={styles.text}>开启上班</Text>
                 </View>
-                <Switch onValueChange={(value)=>
-                {this.setState({falseSwitchIsOn:value})
+                <TouchableOpacity style={{marginRight:20}} onPress={()=>{
+                    this.setState({ falseSwitchIsOn:!this.state.falseSwitchIsOn })
                     if(this.state.falseSwitchIsOn==false){
                         postFetch(API.KaiShang,{goWork:1},(result)=>{
                             // alert(JSON.stringify(result))
@@ -111,14 +111,40 @@ export default class MineMessage extends Component{
                             }
                         })
                     }
-                }}
-                        value={this.state.falseSwitchIsOn}
-                        onTintColor='#FF305E'
-                    // // tintColor='blue'
-                        thumbTintColor='white'
-                    style={styles.switch}
+                }}>
+                    <Image  source={ this.state.falseSwitchIsOn? require('../../../img/goods/switchon.png'):
+                        require('../../../img/goods/switchoff.png')}/>
+                </TouchableOpacity>
 
-                />
+                {/*<Switch onValueChange={(value)=>*/}
+                {/*{this.setState({falseSwitchIsOn:value})*/}
+                    {/*if(this.state.falseSwitchIsOn==false){*/}
+                        {/*postFetch(API.KaiShang,{goWork:1},(result)=>{*/}
+                            {/*// alert(JSON.stringify(result))*/}
+                            {/*if(result.status==1){*/}
+                                {/*LoactionModal.startLocationUpload()*/}
+                                {/*this._toastf.show('开启上班')*/}
+                            {/*}*/}
+                        {/*})*/}
+                    {/*}else {*/}
+                        {/*postFetch(API.KaiShang,{goWork:0},(result)=>{*/}
+                            {/*alert(JSON.stringify(result))*/}
+
+                            {/*if(result.status==1){*/}
+                                {/*LoactionModal.stopLocationUpload()*/}
+                                {/*this._toastf.show('关闭成功')*/}
+                            {/*}*/}
+                        {/*})*/}
+                    {/*}*/}
+                {/*}}*/}
+                        {/*value={this.state.falseSwitchIsOn}*/}
+                        {/*onTintColor='#FF305E'*/}
+                    {/*// // tintColor='blue'*/}
+                        {/*thumbTintColor='white'*/}
+                    {/*style={styles.switch}*/}
+
+                {/*/>*/}
+
             </View>
 
 
@@ -129,7 +155,7 @@ export default class MineMessage extends Component{
             }}>
                 <View style={styles.kaiqi}>
                     <Image source={require('../../../img/shezhi/dongtai.png')} style={styles.img}/>
-                <Text style={styles.text}>收资记录</Text>
+                    <Text style={styles.text}>收资记录</Text>
                 </View>
 
 

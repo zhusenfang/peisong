@@ -34,7 +34,15 @@ export default class ZhangMingXi extends Component{
         if(Platform.OS==='android'){
             BackHandler.addEventListener('hardwareBackPress', this._androidBack);}
         postFetch(API.ZhangHuMingxi,null,(result)=>{
-            // alert(JSON.stringify(result))
+             //alert(JSON.stringify(result))
+
+            result.data = [
+                {id:1,createTime:'2018/2/1 17:17',changeReason:'货不好',changeDirection:1,quantity:'黑椒西牛排Style',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:2,createTime:'2018/2/1 17:17',changeReason:'货不好',changeDirection:0,quantity:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:3,createTime:'2018/2/1 17:17',changeReason:'货不好',changeDirection:1,quantity:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:4,createTime:'2018/2/1 17:17',changeReason:'货不好',changeDirection:0,quantity:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                ];
+
             if(result.status==1){
                 this.setState({
                     dataSource:this.state.dataSource.cloneWithRows(result.data)
@@ -68,7 +76,8 @@ export default class ZhangMingXi extends Component{
         // alert(showday[new Date(rowData.createTime).getDate()-1])
         var time=new Date(rowData.createTime).getDate()
         // alert(JSON.stringify(new Date(rowData.createTime).getDay()))
-        return(<TouchableOpacity style={styles.list} onPress={()=>{this.props.navigation.navigate('TodayDetail',{data:rowData.id})}}>
+        return(
+            <TouchableOpacity style={styles.list} onPress={()=>{this.props.navigation.navigate('TodayDetail',{data:rowData.id})}}>
             <View style={styles.item}>
                 <View style={comstyle.colitem}>
                     <Text style={styles.zhou}>{showday[new Date(rowData.createTime).getDay()-1]}</Text>

@@ -55,9 +55,8 @@ export default class EndOrder extends Component {
         return(<View style={{flex:1,marginTop:20,backgroundColor:'#f9f9f9'}}>
             <Tabs
                 initialPage={0}
-
-
-                tabBarUnderlineStyle={{backgroundColor:"#459CF4",justifyContent:"center",width:130,alignSelf:'center',marginLeft:25}}
+                onChangeTab={(page)=>{ this.setState({currentPage:page.i}); }}
+                tabBarUnderlineStyle={{backgroundColor:this.state.currentPage==1?"#33bab2":"#459CF4",justifyContent:"center",width:130,alignSelf:'center',marginLeft:Contants.Screen.width/11}}
 
             >
                 <Tab

@@ -89,7 +89,11 @@ import DongTaiPing from './view/window/news/DongTaiPing';
 import ProgressOrderDetail from './view/window/orderpage/ProgressOrderDetail';
 import YiChangOrder from './view/window/orderpage/YiChangOrder';
 import ChargeView from './view/window/message/ChargeView';
+
 import DaoOrderDetail from './view/window/orderpage/DaoOrderDetail';
+import WaiOrderDetail from './view/window/orderpage/WaiOrderDetail';
+import NeiOrderDetail from './view/window/orderpage/NeiOrderDetail';
+
 import ProgressNews from './view/window/orderpage/ProgressNews';
 import CommonModal from './view/CommonPage/ComonModal';
 import ProgressDaoDetails from './view/window/orderpage/ProgressDaoDetails';
@@ -372,6 +376,12 @@ const StackNavi=StackNavigator({
     },
     DaoOrderDetail:{
      screen:DaoOrderDetail
+    },
+    WaiOrderDetail:{
+        screen:WaiOrderDetail
+    },
+    NeiOrderDetail:{
+        screen:NeiOrderDetail
     },
     ProgressNews:{
      screen:ProgressNews

@@ -55,7 +55,7 @@ export default class OrderSecondDetail extends Component {
             shangphone:'',
             shangAdd:'',
             shouyi:"",
-            daishouprice:'',
+            daishouprice:'50',
             latitude:'',
             longitude:'',
             index:true,
@@ -118,9 +118,10 @@ export default class OrderSecondDetail extends Component {
                         <TouchableOpacity style={styles.da} onPress={()=>{
                             this.shouli()
                         }}>
-                            <Image style={[styles.da]} source={require('../../../img/daisong/jiedan.png')}>
-                                <Text style={styles.text} onPress={this.shouli.bind(this)}>接  单</Text>
-                            </Image>
+                            <Text style={styles.text} onPress={this.shouli.bind(this)}>接  单</Text>
+                            {/*<Image style={[styles.da]} source={require('../../../img/daisong/jiedan.png')}>*/}
+                             {/**/}
+                            {/*</Image>*/}
                         </TouchableOpacity>
                     </View>
                     <View style={{flexDirection:'row',justifyContent:'center',alignItems:'center',marginTop:10}}>
@@ -403,6 +404,14 @@ const styles=StyleSheet.create({
     da:{
         justifyContent:'center',
         alignItems:'center',
+        backgroundColor:'white',
+        marginRight:10,
+        marginLeft:10,
+        width:Contants.Screen.width-40,
+        height:35,
+        borderRadius:5,
+        borderColor:'red',
+        borderWidth:1,
 
     },
     dao:{

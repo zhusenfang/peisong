@@ -138,20 +138,22 @@ export default class OrderDetails extends Component {
                         {/*<Text style={styles.text} onPress={()=>{*/}
                             {/*this.props.navigation.navigate('RefuseOrder',{data:list})*/}
                         {/*}}>申请拒单</Text>*/}
-                        <TouchableOpacity style={styles.da} onPress={()=>{
+                        <TouchableOpacity style={[styles.da,{borderColor:'#e5e5e5'}]} onPress={()=>{
                             this.props.navigation.navigate('RefuseOrder',{data:list})
                         }}>
-                            <Image style={[styles.da,{marginLeft:10}]} source={require('../../../img/window/ashanchu.png')}>
-                                <Text style={styles.text} onPress={()=>{
-                                    this.props.navigation.navigate('RefuseOrder',{data:list})
-                                }}>申请拒单</Text>
-                            </Image>
+                            <Text style={[styles.text,{color:'#282828'}]} onPress={()=>{
+                            this.props.navigation.navigate('RefuseOrder',{data:list})
+                        }}>申请拒单</Text>
+                            {/*<Image style={[styles.da,{marginLeft:10}]} source={require('../../../img/window/ashanchu.png')}>*/}
+                               {/**/}
+                            {/*</Image>*/}
                         </TouchableOpacity>
 
                         <TouchableOpacity style={styles.da} onPress={this.songda.bind(this)}>
-                            <Image style={[styles.da,{marginRight:10}]} source={require('../../../img/window/baocun.png')}>
                             <Text style={styles.text} onPress={this.songda.bind(this)}>确认取餐</Text>
-                            </Image>
+                            {/*<Image style={[styles.da,{marginRight:10}]} source={require('../../../img/window/baocun.png')}>*/}
+
+                            {/*</Image>*/}
                         </TouchableOpacity>
                     </View>
                     <View style={[comstyle.item,{marginTop:20}]}>
@@ -455,6 +457,14 @@ const styles=StyleSheet.create({
     da:{
         justifyContent:'center',
         alignItems:'center',
+        backgroundColor:'white',
+        marginRight:10,
+        marginLeft:10,
+        width:(Contants.Screen.width-40)/2,
+        height:35,
+        borderRadius:5,
+        borderColor:'red',
+        borderWidth:1
 
     },
     dao:{

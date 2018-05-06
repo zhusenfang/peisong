@@ -96,6 +96,23 @@ export default class ProgressFirst extends Component {
               this.setState({
                   isRefreshing:false
               })
+
+
+
+              result.data = [
+                  {id:1,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'黑椒西牛排Style',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:2,orderAlpha:'B号',orderNumber:2,phase:2,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:3,orderAlpha:'D号',orderNumber:1,phase:3,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:4,orderAlpha:'A号',orderNumber:1,phase:4,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:5,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:6,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:7,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:8,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:9,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:10,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                  {id:11,orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+
+              ];
               this.timer && clearInterval(this.timer)
               if(result.status==1){
                   this.setState({
@@ -230,7 +247,9 @@ export default class ProgressFirst extends Component {
             >
                 {this.state.id.map((rowData,index)=>{
                     rowData.countdownTime -= 1000;
-                    return(<TouchableOpacity style={styles.listview} onPress={this.select.bind(this,rowData)} key={index}>
+                    return(
+
+                        <TouchableOpacity style={styles.listview} onPress={this.select.bind(this,rowData)} key={index}>
                         <View style={{flexDirection:'row',justifyContent:'flex-start',alignItems:'center'}}>
                             {/*<View style={{flexDirection:'column'}}>*/}
                             {/*<Image source={require('../../../img/order/lanshutiao.png')}/>*/}
@@ -241,8 +260,8 @@ export default class ProgressFirst extends Component {
                             </Image>
                             <View style={styles.item}>
                                 {/*<Text>{rowData.consignee}</Text>*/}
-                                <Text style={comstyle.text}>{rowData.restaurantName}</Text>
-                                <Text style={comstyle.textsmal}>{rowData.phase==1?'待取餐':rowData.phase==2?'待送达':rowData.phase==3?'正在提交的异常单':rowData.phase==4?'历史订单':'待分配'}</Text>
+                                <Text style={[comstyle.text,{marginBottom:8,}]}>{rowData.restaurantName}</Text>
+                                <Text style={[comstyle.textsmal,{marginLeft:-5,}]}>【新消息】{rowData.phase==1?'待取餐':rowData.phase==2?'待送达':rowData.phase==3?'正在提交的异常单':rowData.phase==4?'历史订单':'待分配'}</Text>
                             </View>
                         </View>
                         {/*<Text>{MyTimer.formatSeconds(1,this.state.comdtime)}</Text>*/}

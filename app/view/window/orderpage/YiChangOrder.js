@@ -52,7 +52,17 @@ export default class YiChangOrder extends Component {
         if(Platform.OS==='android'){
             BackHandler.addEventListener('hardwareBackPress', this._androidBack);}
         postFetch(API.YiChangs,{expressageOrder:{status:1}},(result)=>{
-            // alert(JSON.stringify(result))
+             //alert(JSON.stringify(result))
+
+
+            result.status = 1;
+            result.data = [
+                {id:1,orderCreateTime:'2018/8/9 17:56',orderAlpha:'A号',orderNumber:1,phase:1,restaurantName:'黑椒西牛排Style',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:2,orderCreateTime:'2018/8/9 17:56',orderAlpha:'B号',orderNumber:2,phase:2,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+
+            ];
+
+
             if(result.status==1){
                 if(result.data==[] || result.data.length==0){
 

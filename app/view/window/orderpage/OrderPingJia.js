@@ -69,8 +69,8 @@ constructor(props){
 
     }
     render(){
-        const list=this.props.navigation.state.params.data;
-        // const list=3
+        //const list=this.props.navigation.state.params.data;
+        const list=5;
         var view=null;
 
         if(list==0&&list==undefined){
@@ -78,39 +78,41 @@ constructor(props){
             view=(<View></View>)
         }
         if(list==1){
-            view=(<Image source={require('../../../img/dian/wujiaox.png')}/>)
+            view=(<Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>)
         }
         if(list==2){
             view=(
-                <View style={{flexDirection:'row',marginLeft:20}}><Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
+                <View style={{flexDirection:'row',marginLeft:20}}>
+                    <Image  style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image  style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
                 </View>)
         }
         if(list==3){
             view=(
                 <View style={{flexDirection:'row',marginLeft:20}}><Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
                 </View>)
         }
         if(list==4){
             view=(
                 <View style={{flexDirection:'row',marginLeft:20}}><Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
                 </View>)
         }
         if(list==5){
             view=(
-                <View style={{flexDirection:'row',marginLeft:20}}><Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
-                    <Image source={require('../../../img/dian/wujiaox.png')}/>
+                <View style={{flexDirection:'row',marginLeft:20}}>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
+                    <Image style={{marginLeft:10}} source={require('../../../img/dian/wujiaox.png')}/>
                 </View>)
         }
-        const ad =this.props.navigation.state.params.da;
+        const ad ='送贷快,送货上门,送上们';//this.props.navigation.state.params.da;
         var str=new Array();
         if(ad!=undefined){
             str=ad.split(',')

@@ -65,6 +65,21 @@ export default class OrderSecond extends Component {
             this.setState({
                 isRefreshing:false
             })
+
+            result.data = [{id:1,orderNumber:1,restaurantName:'黑椒西牛排Style',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:2,orderNumber:2,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:3,orderNumber:3,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:4,orderNumber:4,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:5,orderNumber:5,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:6,orderNumber:6,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:7,orderNumber:7,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:8,orderNumber:8,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:9,orderNumber:9,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:10,orderNumber:10,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+                {id:11,orderNumber:11,restaurantName:'牛排',countdownTime:80000,diningType:0,deliveryType:0,imlUrl:'http://imgsrc.baidu.com/imgad/pic/item/9a504fc2d562853574b40c099bef76c6a7ef6346.jpg'},
+
+            ];
+
             if(result.status==1){
                 this.setState({
                     totalpage:result.page.totalCount
@@ -195,8 +210,9 @@ export default class OrderSecond extends Component {
                     </Image>
                     <View style={styles.item}>
                         {/*<Text>{rowData.consignee}</Text>*/}
-                        <Text style={comstyle.text}>{rowData.restaurantName}</Text>
-                        <Text style={comstyle.textsmal}>【新消息】您有新订单！</Text>
+
+                        <Text style={[comstyle.text,{marginBottom:8,}]}>{rowData.restaurantName}</Text>
+                        <Text style={[comstyle.textsmal,{marginLeft:-5,}]}>【新消息】您有新订单！</Text>
                     </View>
                 </View>
                 {/*<Text>{MyTimer.formatSeconds(1,this.state.comdtime)}</Text>*/}
@@ -218,7 +234,7 @@ export default class OrderSecond extends Component {
         // alert(rowData.id.toString())
         // alerthistles
         //  alert('sss')
-        this.props.navigation.navigate('OrderSecondDetail',{data:JSON.stringify(rowData.deliveryOrderId)})
+        this.props.navigation.navigate('NeiOrderDetail',{data:JSON.stringify(rowData.deliveryOrderId)})
         // alert(JSON.stringify(rowData.id))
     }
 }

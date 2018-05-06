@@ -32,17 +32,17 @@ export default class TodayDetail extends Component {
     componentDidMount(){
         const list=this.props.navigation.state.params.data;
         postFetch(API.TodayDetail,{id:list,type:2},(result)=>{
-            alert(JSON.stringify(result))
+            //alert(JSON.stringify(result))
             if(result.status==1){
                 this.setState({
-                    money:result.data.quantity,
-                    changedir:result.data.changeDirection,
-                    paytype:result.data.paymentMode,
-                    goodsdes:result.data.changeReason,
+                    money:8,//result.data.quantity,
+                    changedir:0,//result.data.changeDirection,
+                    paytype:'八月消除',//result.data.paymentMode,
+                    goodsdes:'外卖订单',//result.data.changeReason,
                     account:result.data.reciprocalAccount,
                     mine:result.data.accountId,
-                    createtime:result.data.createTime,
-                    orderid:result.data.orderId,
+                    createtime:'2018/7/6 13:13',//result.data.createTime,
+                    orderid:'093845786744748589',//result.data.orderId,
 
                 })
             }
@@ -52,24 +52,25 @@ export default class TodayDetail extends Component {
         return(<View style={[comstyle.contain,{backgroundColor:'#f9f9f9'}]}>
             <View style={styles.con}>
                 <View style={styles.first}>
-                    <Image source={require('../../../img/shezhi/renmb.png')}/>
-                    <Text style={{fontSize:36,color:this.state.changedir==0?'#FF305E':'#459CF4'}}>{this.state.money}</Text>
+                    <Image style={{marginBottom:-10}} source={require('../../../img/shezhi/renmb.png')}/>
+                    <Text style={{fontSize:36,color:this.state.changedir==0?'#FF305E':'#459CF4'}}>
+                        {this.state.money}</Text>
                 </View>
                 <View style={styles.sec}>
                     <Text>交易成功</Text>
                 </View>
                 <View style={comstyle.item}>
-                    <Text style={comstyle.maleft}>付款方式</Text>
+                    <Text style={comstyle.maleft}>付款方</Text>
                     <Text style={comstyle.textright}>{this.state.paytype}</Text>
                 </View>
                 <View style={comstyle.item}>
                     <Text style={comstyle.maleft}>商品说明</Text>
                     <Text style={comstyle.textright}>{this.state.goodsdes}</Text>
                 </View>
-                <View style={comstyle.item}>
-                    <Text style={comstyle.maleft}>对方账户</Text>
-                    <Text style={comstyle.textright}>{this.state.account}</Text>
-                </View>
+                {/*<View style={comstyle.item}>*/}
+                    {/*<Text style={comstyle.maleft}>对方账户</Text>*/}
+                    {/*<Text style={comstyle.textright}>{this.state.account}</Text>*/}
+                {/*</View>*/}
                 <View style={comstyle.item}>
                     <View style={comstyle.contain}/>
                     <View style={styles.time}>
@@ -80,14 +81,14 @@ export default class TodayDetail extends Component {
                 <View style={comstyle.heng}/>
                 <View style={comstyle.item}>
                     <Text style={comstyle.maleft}>创建时间</Text>
-                    <View style={comstyle.time}>
+                    <View style={[comstyle.time,{marginRight:20}]}>
                         {/*<Text style={comstyle.textright}>{this.state.createtime}</Text>*/}
-                        <Text>{new Date(this.state.createtime).getFullYear()+'.'}</Text>
-                        <Text>{new Date(this.state.createtime).getMonth()+1+'.'}</Text>
+                        <Text>{new Date(this.state.createtime).getFullYear()+'-'}</Text>
+                        <Text>{new Date(this.state.createtime).getMonth()+1+'-'}</Text>
                         <Text>{new Date(this.state.createtime).getDate()}</Text>
                         <Text style={{marginLeft:10}}>{new Date(this.state.createtime).getHours()+':'}</Text>
-                        <Text>{new Date(this.state.createtime).getMinutes()+":"}</Text>
-                        <Text style={{marginRight:20}}>{new Date(this.state.createtime).getSeconds()}</Text>
+                        <Text>{new Date(this.state.createtime).getMinutes()}</Text>
+                        {/*<Text style={{marginRight:20}}>{new Date(this.state.createtime).getSeconds()}</Text>*/}
                     </View>
                 </View>
                 <View style={comstyle.item}>

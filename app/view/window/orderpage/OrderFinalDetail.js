@@ -382,7 +382,7 @@ const styles=StyleSheet.create({
         backgroundColor:"white"
     },
     kehu:{
-        flexDirection:'column',
+        flexDirection:'column',backgroundColor:'white',
 
     },
     mesg:{

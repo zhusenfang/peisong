@@ -37,23 +37,23 @@ constructor(props){
         dataSource: new ListView.DataSource({
             rowHasChanged: (row1, row2) => row1 !== row2,
         }),
-        name:'',//客户姓名
-        phone:'',
-        adress:'',//地址
-        totalprice:0,//合计
+        name:'赵燕',//客户姓名
+        phone:'17710236886',
+        adress:'广州省湛江',//地址
+        totalprice:5,//合计
         type:0,//订单类型
         isShowModal:false,
         changeTime:'',
         isChangeName:false,
         deliveryMethod:0,
         deliveryType:0,
-        appointtime:'',
-        deliverFee:'',
-        orderid:'',
+        appointtime:'2018/08/09 12:34',
+        deliverFee:'5',
+        orderid:'0998877558669977070',
 
-        shang:'',
-        shangphone:'',
-        shangAdd:'',
+        shang:'赵燕',
+        shangphone:'17710236886',
+        shangAdd:'广州省湛江',
         shouyi:"",
         latitude:'',
         longitude:'',
@@ -116,15 +116,14 @@ constructor(props){
         return(
          <View style={{flex:1,backgroundColor:'#f9f9f9'}}>
              <ScrollView style={{width:Contants.Screen.width}} >
-
-
                  <View style={styles.top}>
                      <TouchableOpacity style={styles.da} onPress={()=>{
                          this.shouli()
                      }}>
-                         <Image style={[styles.da]} source={require('../../../img/daisong/jiedan.png')}>
-                             <Text style={styles.text} onPress={this.shouli.bind(this)}>接  单</Text>
-                         </Image>
+                         <Text style={styles.text} onPress={this.shouli.bind(this)}>接  单</Text>
+                         {/*<Image style={[styles.da]} source={require('../../../img/daisong/jiedan.png')}>*/}
+                            {/**/}
+                         {/*</Image>*/}
                      </TouchableOpacity>
                  </View>
 
@@ -413,8 +412,17 @@ const styles=StyleSheet.create({
         marginTop:20
     },
     da:{
+
         justifyContent:'center',
         alignItems:'center',
+        backgroundColor:'white',
+        marginRight:10,
+        marginLeft:10,
+        width:Contants.Screen.width-40,
+        height:35,
+        borderRadius:5,
+        borderColor:'red',
+        borderWidth:1,
 
     },
     dao:{

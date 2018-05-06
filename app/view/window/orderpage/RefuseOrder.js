@@ -121,9 +121,10 @@ export default class RefuseOrder extends Component {
                                alert(error)
                            })
                    }}>
-                   <Image source={require('../../../img/window/tijiao.png')} style={{alignItems:'center',flexDirection:'row',justifyContent:'center'}}>
                        <Text style={{color:'#FF305E',fontSize:14}}>确认提交</Text>
-                   </Image>
+                   {/*<Image source={require('../../../img/window/tijiao.png')} style={{alignItems:'center',flexDirection:'row',justifyContent:'center'}}>*/}
+                       {/**/}
+                   {/*</Image>*/}
                    </TouchableOpacity>
                    <View style={styles.ben}>
                        <View style={comstyle.rightview}>
@@ -167,19 +168,23 @@ export default class RefuseOrder extends Component {
                        <View style={{flexDirection:'column',backgroundColor:'white',borderRadius:5}}>
                            <Text style={{margin:10}}>补充说明</Text>
                            <View style={{width:Contants.Screen.width,height:1,backgroundColor:'#E5E5E5'}}/>
-                           <View style={{height:60,width:Contants.Screen.width,alignItems:'center',justifyContent:'center'}}>
+                           <View style={{height:120,width:Contants.Screen.width,alignItems:'center',justifyContent:'center'}}>
                            <TextInput
                                ref={e => this._nameInput = e}
                                underlineColorAndroid='transparent'
                                style={{
                                    backgroundColor: "#FFFFFF",
-                                   textAlign: "center",
-                                   height:40,
+                                   textAlign: "left",
+                                   height:100,
                                    borderWidth:1,
+                                   borderRadius:5,
                                    borderColor:'#E5E5E5',
                                    width:Contants.Screen.width-80,
                                    // marginLeft:10,
+                                   fontSize:14,
+                                   padding:5,
                                    marginRight:40
+
                                }}
                                onChangeText={(e)=>{
                                    this.setState({
@@ -315,10 +320,17 @@ const styles=StyleSheet.create({
     sure:{
         justifyContent:'center',
         marginTop:20,
+        backgroundColor:'white',
+        width:Contants.Screen.width-40,
 
-        // backgroundColor:'white',
-        // marginLeft:Contants.Screen.width/2+20,
-        alignItems:'center'
+
+        marginRight:20,
+        marginLeft:20,
+        height:35,
+        alignItems:'center',
+        borderRadius:5,
+        borderColor:'red',
+        borderWidth:1
     },
     img:{
         width:20,

@@ -62,6 +62,8 @@ export default class Project extends Component {
         this.state={
             isshowmodal:false,
             isSearch:false,
+            msg_bool:true,
+            msgorder_bool:true,
 
         }
         navigation=this.props.navigation
@@ -301,162 +303,232 @@ export default class Project extends Component {
                     <OrderFinally navigation={navigation}/>
                 </ScrollableTabView>
 
-             <Modal
-              isVisible={this.state.isshowmodal}
-              hideOnBack={true}
-              transparent={true}
-              style={styles.modalstyles}
-              //backdropColor='transferent'
-              backdropOpacity={0.3}
-              animationIn={'slideInRight'}
-              animationOut={'slideOutRight'}
-             >
-                 {/*点击外框，键盘消失*/}
-                 <TouchableOpacity
-                     onPress={() => {
-                         this.setState({isshowmodal: false});
+                <Modal
+                  isVisible={this.state.isshowmodal}
+                  hideOnBack={true}
+                  transparent={true}
+                  style={styles.modalstyles}
+                  //backdropColor='transferent'
+                  backdropOpacity={0.3}
+                  animationIn={'slideInRight'}
+                  animationOut={'slideOutRight'}
+                 >
+                     {/*点击外框，键盘消失*/}
+                     <TouchableOpacity
+                         onPress={() => {
+                             this.setState({isshowmodal: false});
 
-                     }}
-                     // style={{position: "absolute", top: 240, left: 0, right: 70, bottom: 0,zIndex:100}}
-                 />
+                         }}
+                         // style={{position: "absolute", top: 240, left: 0, right: 70, bottom: 0,zIndex:100}}
+                     />
 
-                     <Image source={require("./img/page/background.png")} style={{marginRight:2,marginTop:Platform.OS==='ios'?25:0}}>
+                         <Image source={require("./img/page/background.png")} style={{marginRight:2,marginTop:Platform.OS==='ios'?25:0}}>
 
 
-                         <View style={{flexDirection:"row",alignItems:"center"}}>
-                             <TouchableOpacity style={styles.gonggao} onPress={this.publicord.bind(this)}>
-                                 <Image source={require("./img/order/diaodu.png")} />
-                                 <Text style={comstyle.text}>调 度</Text>
-                             </TouchableOpacity>
-                             <TouchableOpacity style={styles.sousuo} onPress={this.searchview.bind(this)}>
-                                 <Image source={require("./img/order/shousuo.png")} />
-                                 <Text style={comstyle.text}>搜 索</Text>
-                             </TouchableOpacity>
-                             {/*中心红色按钮*/}
-                             <TouchableOpacity style={styles.btncons} onPress={()=>{
+                             <View style={{flexDirection:"row",alignItems:"center"}}>
+                                 <TouchableOpacity style={styles.gonggao} onPress={this.publicord.bind(this)}>
+                                     <Image source={require("./img/order/diaodu.png")} />
+                                     <Text style={comstyle.text}>调 度</Text>
+                                 </TouchableOpacity>
+                                 <TouchableOpacity style={styles.sousuo} onPress={this.searchview.bind(this)}>
+                                     <Image source={require("./img/order/shousuo.png")} />
+                                     <Text style={comstyle.text}>搜 索</Text>
+                                 </TouchableOpacity>
+                                 {/*中心红色按钮*/}
+                                 <TouchableOpacity style={styles.btncons} onPress={()=>{
+                                     this.setState({
+                                         isshowmodal:false
+                                     })
+                                 }}>
+
+                                     <Image source={require("./img/page/buttonselt.png")} style={styles.btnimgs} />
+                                 </TouchableOpacity>
+                             </View>
+                             {/*<TouchableOpacity style={{backgroundColor:'green',width:170,height:26,zIndex:100}} onPress={()=>{this.setState({isshowmodal:false})}}/>*/}
+                             {/*下面的订单等*/}
+                             <Image source={require('./img/daisong/xiaokuang.png')} style={{marginRight:Contants.Screen.width/3,position:'absolute',alignItems:'center',justifyContent:'center',marginTop:Contants.Screen.height/8}}>
+                                 <TouchableOpacity style={{alignItems:'center',flexDirection:'row'}} onPress={()=>{
+                                     this.setState({
+                                         isshowmodal:false
+                                     })
+                                 }}>
+                                     <Image source={require('./img/daisong/list.png')}/>
+                                     <Text style={[comstyle.text,{marginLeft:20}]}>订单列表</Text>
+                                 </TouchableOpacity>
+                             </Image>
+                             {/*<TouchableOpacity style={{backgroundColor:'green',width:170,height:26,zIndex:100,marginTop:47}} onPress={()=>{this.setState({isshowmodal:false})}}/>*/}
+                             <Image source={require('./img/daisong/xiaokuang.png')} style={{marginRight:Contants.Screen.width/3,position:'absolute',alignItems:'center',justifyContent:'center',marginTop:Contants.Screen.height/5+20}}>
+                                 <TouchableOpacity style={{alignItems:'center',flexDirection:'row'}} onPress={()=>{
+                                     this.props.navigation.navigate('OrderGaiLan')
                                  this.setState({
                                      isshowmodal:false
                                  })
-                             }}>
-
-                                 <Image source={require("./img/page/buttonselt.png")} style={styles.btnimgs} />
-                             </TouchableOpacity>
-                         </View>
-                         {/*<TouchableOpacity style={{backgroundColor:'green',width:170,height:26,zIndex:100}} onPress={()=>{this.setState({isshowmodal:false})}}/>*/}
-                         {/*下面的订单等*/}
-                         <Image source={require('./img/daisong/xiaokuang.png')} style={{marginRight:Contants.Screen.width/3,position:'absolute',alignItems:'center',justifyContent:'center',marginTop:Contants.Screen.height/8}}>
-                             <TouchableOpacity style={{alignItems:'center',flexDirection:'row'}} onPress={()=>{
-                                 this.setState({
-                                     isshowmodal:false
-                                 })
-                             }}>
-                                 <Image source={require('./img/daisong/list.png')}/>
-                                 <Text style={[comstyle.text,{marginLeft:20}]}>订单列表</Text>
-                             </TouchableOpacity>
-                         </Image>
-                         {/*<TouchableOpacity style={{backgroundColor:'green',width:170,height:26,zIndex:100,marginTop:47}} onPress={()=>{this.setState({isshowmodal:false})}}/>*/}
-                         <Image source={require('./img/daisong/xiaokuang.png')} style={{marginRight:Contants.Screen.width/3,position:'absolute',alignItems:'center',justifyContent:'center',marginTop:Contants.Screen.height/5+20}}>
-                             <TouchableOpacity style={{alignItems:'center',flexDirection:'row'}} onPress={()=>{
-                                 this.props.navigation.navigate('OrderGaiLan')
-                             this.setState({
-                                 isshowmodal:false
-                             })
-                             }}>
-                                 <Image source={require('./img/daisong/gailan.png')}/>
-                                 <Text style={[comstyle.text,{marginLeft:20}]}>订单概览</Text>
-                             </TouchableOpacity>
-                         </Image>
-                         {/*</TouchableOpacity>*/}
-                         {/*<TouchableOpacity style={{backgroundColor:'green',width:170,height:200,zIndex:100,marginTop:48}} onPress={()=>{this.setState({isshowmodal:false})}}/>*/}
-                         {/*下面的订单等*/}
-                         <View style={{flexDirection:'column',justifyContent:"flex-end",alignSelf:'flex-end',marginRight:15}}>
-                             <TouchableOpacity style={styles.dingdan} onPress={this.dingdan.bind(this)}>
-                                 <Image source={require("./img/order/dingdan.png")} />
-                                 <Text style={comstyle.text}>订 单</Text>
-                             </TouchableOpacity>
-
-
-                             <TouchableOpacity style={styles.xiaoxi} onPress={this.news.bind(this)}>
-                                 <Image source={require("./img/order/message.png")} />
-                                 <Text style={comstyle.text}>消 息</Text>
-                             </TouchableOpacity>
-                             {/*<TouchableOpacity style={styles.xiaoxi} onPress={this.gongju.bind(this)}>*/}
-                                 {/*<Image source={require("./img/order/tools.png")} />*/}
-                                 {/*<Text>工 具</Text>*/}
+                                 }}>
+                                     <Image source={require('./img/daisong/gailan.png')}/>
+                                     <Text style={[comstyle.text,{marginLeft:20}]}>订单概览</Text>
+                                 </TouchableOpacity>
+                             </Image>
                              {/*</TouchableOpacity>*/}
-                             <TouchableOpacity style={styles.xiaoxi} onPress={this.settingview.bind(this)}>
-                                 <Image source={require("./img/order/mine.png")}/>
-                                 <Text style={comstyle.text}>我 的</Text>
-                             </TouchableOpacity>
-                             <TouchableOpacity style={styles.xiaoxi} onPress={this.hexiao.bind(this)}>
-                                 <Image source={require("./img/order/hexiao.png")}/>
-                                 <Text style={comstyle.text}>扫 码</Text>
-                             </TouchableOpacity>
-                         </View>
-                     </Image>
-             </Modal>
-            <Modal
-                isVisible={this.state.isSearch}
-                hideOnBack={true}
-                transparent={true}
-                style={styles.modalstyle}
-                //backdropColor='transferent'
-                backdropOpacity={0.3}
-                animationIn={'slideInRight'}
-                animationOut={'slideOutRight'}
-            >
-                {/*点击外框，键盘消失*/}
-                <TouchableOpacity
-                    onPress={() => {
-                        this.setState({isSearch: false});
+                             {/*<TouchableOpacity style={{backgroundColor:'green',width:170,height:200,zIndex:100,marginTop:48}} onPress={()=>{this.setState({isshowmodal:false})}}/>*/}
+                             {/*下面的订单等*/}
+                             <View style={{flexDirection:'column',justifyContent:"flex-end",alignSelf:'flex-end',marginRight:15}}>
+                                 <TouchableOpacity style={styles.dingdan} onPress={this.dingdan.bind(this)}>
+                                     <Image source={require("./img/order/dingdan.png")} />
+                                     <Text style={comstyle.text}>订 单</Text>
+                                 </TouchableOpacity>
 
-                    }}
-                    style={{position: "absolute", top: 0, left: 0, right: 0, bottom: 0}}
-                />
-                {Platform.OS=='android'?
-               <View style={{flexDirection:'column',width:Contants.Screen.width,height:150}}>
-                  <TouchableOpacity style={styles.close} onPress={()=>{this.setState({isSearch:false})}}>
-                      <Image source={require('./img/search/close.png')} style={styles.closeimg}/>
-                  </TouchableOpacity>
-                   <View style={styles.first}>
-                    <Image source={require('./img/search/classify.png')} style={styles.news}>
-                        <Text style={styles.totle}>消息/联系人</Text>
-                    </Image>
-                       <TouchableOpacity onPress={()=>{this.props.navigation.navigate('SearchOrder')
-                       this.setState({
-                          isSearch:false
-                       })
-                       }}>
-                       <Image source={require('./img/search/classify.png')} style={styles.news}>
-                           <Text style={styles.totle}>订单</Text>
-                       </Image>
-                       </TouchableOpacity>
-                   </View>
-               </View>:
-                    <View style={{flexDirection:'column',width:Contants.Screen.width,height:150}}>
-                        <TouchableOpacity style={styles.close} onPress={()=>{this.setState({isSearch:false})}}>
-                            <Image source={require('./img/search/close.png')} style={styles.closeimg}/>
-                        </TouchableOpacity>
-                        <View style={styles.first}>
-                            <Image source={require('./img/search/classify.png')} style={styles.news}>
-                                <Text style={styles.totle}>消息/联系人</Text>
-                            </Image>
-                            <TouchableOpacity onPress={()=>{this.props.navigation.navigate('SearchOrder')
-                                this.setState({
-                                    isSearch:false
-                                })
-                            }}>
-                                <Image source={require('./img/search/classify.png')} style={styles.news}>
-                                    <Text style={styles.totle}>订单</Text>
-                                </Image>
+
+                                 <TouchableOpacity style={styles.xiaoxi} onPress={this.news.bind(this)}>
+                                     <Image source={require("./img/order/message.png")} />
+                                     <Text style={comstyle.text}>消 息</Text>
+                                 </TouchableOpacity>
+                                 {/*<TouchableOpacity style={styles.xiaoxi} onPress={this.gongju.bind(this)}>*/}
+                                     {/*<Image source={require("./img/order/tools.png")} />*/}
+                                     {/*<Text>工 具</Text>*/}
+                                 {/*</TouchableOpacity>*/}
+                                 <TouchableOpacity style={styles.xiaoxi} onPress={this.settingview.bind(this)}>
+                                     <Image source={require("./img/order/mine.png")}/>
+                                     <Text style={comstyle.text}>我 的</Text>
+                                 </TouchableOpacity>
+                                 <TouchableOpacity style={styles.xiaoxi} onPress={this.hexiao.bind(this)}>
+                                     <Image source={require("./img/order/hexiao.png")}/>
+                                     <Text style={comstyle.text}>扫 码</Text>
+                                 </TouchableOpacity>
+                             </View>
+                         </Image>
+                 </Modal>
+                <Modal
+                    isVisible={this.state.isSearch}
+                    hideOnBack={true}
+                    transparent={true}
+                    style={styles.modalstyle}
+                    //backdropColor='transferent'
+                    backdropOpacity={0.3}
+                    animationIn={'slideInRight'}
+                    animationOut={'slideOutRight'}
+                >
+                    {/*点击外框，键盘消失*/}
+                    <TouchableOpacity
+                        onPress={() => {
+                            this.setState({isSearch: false});
+
+                        }}
+                        style={{position: "absolute", top: 0, left: 0, right: 0, bottom: 0}}
+                    />
+                    {Platform.OS=='android'?
+                   <View style={{flexDirection:'column',width:Contants.Screen.width,height:150}}>
+                      <TouchableOpacity style={styles.close} onPress={()=>{this.setState({isSearch:false})}}>
+                          <Image source={require('./img/search/close.png')} style={styles.closeimg}/>
+                      </TouchableOpacity>
+                       <View style={styles.first}>
+                        <Image source={require('./img/search/classify.png')} style={styles.news}>
+                            <Text style={styles.totle}>消息/联系人</Text>
+                        </Image>
+                           <TouchableOpacity onPress={()=>{this.props.navigation.navigate('SearchOrder')
+                           this.setState({
+                              isSearch:false
+                           })
+                           }}>
+                           <Image source={require('./img/search/classify.png')} style={styles.news}>
+                               <Text style={styles.totle}>订单</Text>
+                           </Image>
+                           </TouchableOpacity>
+                       </View>
+                   </View>:
+                        <View style={{flexDirection:'column',width:Contants.Screen.width,height:150}}>
+                            <TouchableOpacity style={styles.close} onPress={()=>{this.setState({isSearch:false})}}>
+                                <Image source={require('./img/search/close.png')} style={styles.closeimg}/>
                             </TouchableOpacity>
+                            <View style={styles.first}>
+                                <Image source={require('./img/search/classify.png')} style={styles.news}>
+                                    <Text style={styles.totle}>消息/联系人</Text>
+                                </Image>
+                                <TouchableOpacity onPress={()=>{this.props.navigation.navigate('SearchOrder')
+                                    this.setState({
+                                        isSearch:false
+                                    })
+                                }}>
+                                    <Image source={require('./img/search/classify.png')} style={styles.news}>
+                                        <Text style={styles.totle}>订单</Text>
+                                    </Image>
+                                </TouchableOpacity>
+                            </View>
                         </View>
-                    </View>
-                }
-            </Modal>
+                    }
+                </Modal>
+
+
+                {this._showMsg()}
+                {this._showMsgOrder()}
             </View>
         );
     }
+
+
+
+
+    _showMsg()
+    {
+        if(this.state.msg_bool){
+            return (
+                <View
+                    style={{
+                        height:35,width:100,
+                        backgroundColor:'#FF305E',
+                        position: "absolute",
+                        right: -5,
+                        bottom: 30,
+                        borderRadius:5,
+                    }}
+                >
+                    <TouchableOpacity
+                        onPress={()=>{this.setState({msg_bool:false})}}
+                        style={{flex:1,flexDirection:'row',
+                            justifyContent:'center',
+                            alignItems:'center',}}>
+                        <Text style={{
+                            color: '#FFFFFF',
+                            fontSize: 15,
+                        }}>8条新消息</Text>
+                    </TouchableOpacity>
+                </View>
+            );
+        }
+
+    }
+
+
+    _showMsgOrder()
+    {
+        if(this.state.msgorder_bool){
+            return (
+                <View
+                    style={{
+                        height:35,width:100,
+                        backgroundColor:'#FF305E',
+                        position: "absolute",
+                        right: -5,
+                        bottom: 30,
+                        borderRadius:5,
+                    }}
+                >
+                    <TouchableOpacity
+                        onPress={()=>{this.setState({msgorder_bool:false})}}
+                        style={{flex:1,flexDirection:'row',
+                            justifyContent:'center',
+                            alignItems:'center',}}>
+                        <Text style={{
+                            color: '#FFFFFF',
+                            fontSize: 15,
+                        }}>有新订单</Text>
+                    </TouchableOpacity>
+                </View>
+            );
+        }
+
+    }
+
+
     renderHeader(){
         return(
 

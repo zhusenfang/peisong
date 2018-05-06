@@ -366,6 +366,7 @@ const styles=StyleSheet.create({
     },
     kehu:{
         flexDirection:'column',
+        backgroundColor:'white'
 
     },
     mesg:{

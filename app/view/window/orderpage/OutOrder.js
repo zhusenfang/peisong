@@ -74,42 +74,48 @@ export default class OutOrder extends Component {
         return(<View style={{flex:1,marginTop:20,backgroundColor:'#f9f9f9'}}>
             <Tabs
             initialPage={0}
+            onChangeTab={(page)=>{ this.setState({currentPage:page.i}); }}
+            tabBarUnderlineStyle={{backgroundColor:this.state.currentPage==1?"#33bab2":"#459CF4",justifyContent:"center",width:130,alignSelf:'center',marginLeft:Contants.Screen.width/11}}
 
-            tabBarUnderlineStyle={{backgroundColor:"#459CF4",justifyContent:"center",width:130,alignSelf:'center',marginLeft:25}}
+
+            // tabBarUnderlineStyle={{backgroundColor:"#459CF4",justifyContent:"center",width:130,alignSelf:'center',marginLeft:25}}
 
             >
                 <Tab
-                    heading={<TabHeading style={{backgroundColor:"white",alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
-                        <Text style={{fontSize:14,color:'#282828'}}>平台订单</Text>
-                        {Platform.OS == 'android' ?
-                            <Image source={require('../../../img/order/bluequ.png')}
-                                   style={{alignItems: 'center', justifyContent: 'center', marginLeft: 5}}>
-                                <Text style={{color: "white"}}>{this.state.msg}</Text></Image> :
-                            <Image source={require('../../../img/order/bluequ.png')}
-                                   style={{alignItems: 'center', justifyContent: 'center', marginLeft: 5}}>
-                                <Text style={{color: "white",backgroundColor:'#459CF4',fontSize:10}}>{this.state.msg}</Text></Image>
-                        }
-                    </TabHeading>}
-                    activeTextStyle={{color:"#000000"}}
-                    textStyle={{color:"#000000"}}
-                    tabStyle={{backgroundColor:"white"}}
-                    activeTabStyle={{backgroundColor:"white"}}
+                    heading={
+                        <TabHeading style={{backgroundColor:"white",alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:14,color:'#282828',backgroundColor: 'transparent'}}>平台订单</Text>
+                                {Platform.OS == 'android' ?
+                                    <Image source={require('../../../img/order/bluequ.png')}
+                                           style={{alignItems: 'center', justifyContent: 'center', marginLeft: 5}}>
+                                        <Text style={{color: "white"}}>{this.state.msg}</Text></Image> :
+                                    <Image source={require('../../../img/order/bluequ.png')}
+                                           style={{alignItems: 'center', justifyContent: 'center', marginLeft: 5}}>
+                                        <Text style={{color: "white",backgroundColor:'#459CF4',fontSize:10}}>{this.state.msg}</Text></Image>
+                                }
+                        </TabHeading>}
+                        activeTextStyle={{color:"#000000"}}
+                        textStyle={{color:"#000000"}}
+                        tabStyle={{backgroundColor:"white"}}
+                        activeTabStyle={{backgroundColor:"white"}}
 
                 >
             <OrderFirst navigation={navigation}/>
 
             </Tab>
 
-                <Tab   heading={<TabHeading style={{backgroundColor:"white",alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
-                    <Text style={{fontSize:14,color:'#282828'}}>代送跑腿</Text>
-                    <Image source={require('../../../img/order/greenqu.png')} style={{alignItems:'center',justifyContent:'center',marginLeft:5}}>
-                    <Text style={{color:"white",fontSize:10,backgroundColor:'#33BAB2'}}>{this.state.msgtow}</Text></Image>
-                </TabHeading>}
+                <Tab
+                    heading={
+                        <TabHeading style={{backgroundColor:"white",alignItems:'center',justifyContent:'center',flexDirection:'row'}}>
+                            <Text style={{fontSize:14,color:'#282828'}}>代送跑腿</Text>
+                            <Image source={require('../../../img/order/greenqu.png')} style={{alignItems:'center',justifyContent:'center',marginLeft:5}}>
+                            <Text style={{color:"white",fontSize:10,backgroundColor:'transparent'}}>{this.state.msgtow}</Text></Image>
+                        </TabHeading>
+                    }
                        activeTextStyle={{color:"#000000"}}
                        textStyle={{color:"#000000"}}
                        tabStyle={{backgroundColor:"white"}}
                        activeTabStyle={{backgroundColor:"white"}}
-                    // tabBarUnderlineStyle={{backgroundColor:'red'}}
                 >
             <OrderSecond navigation={navigation}/>
 
@@ -117,4 +123,7 @@ export default class OutOrder extends Component {
             </Tabs>
         </View>)
     }
+
+
+
 }
